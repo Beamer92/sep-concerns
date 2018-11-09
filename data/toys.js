@@ -1,4 +1,3 @@
-const uuid = require('uuid/v4')
 const toys = [
     {
         id: "82191cee-7e50-41cd-a5a3-0b1a150ea93d",
