@@ -5,6 +5,16 @@ function getAll(limit) {
     return limit ? toys.slice(0, limit) : toys
 }
 
+// function getToy(id) {
+//     return toys.find(obj => obj.id === id)
+// }
+
+function deleteToy (toy){
+    const ind = toys.findIndex(obj => obj.id === toy.id)
+    let toyDeleted = toys.splice(ind, 1)
+    return response = toyDeleted
+}
+
 function makeToy(body) {
     const errors = []
     const name = body.name
@@ -30,4 +40,4 @@ function makeToy(body) {
     return response
 }
 
-module.exports = { getAll, makeToy }
+module.exports = { getAll, makeToy, deleteToy }

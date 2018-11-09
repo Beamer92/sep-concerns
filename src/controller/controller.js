@@ -1,9 +1,23 @@
 const model = require('../models/models')
+const toys = require('../../data/toys')
+
+function chkToy(req, res, next) {
+   const validToy = toys.find(obj => obj.id === req.params.id)
+   if(!validToy)
+    return next({status: 404, message: "Could not find that Toy"})
+    
+    req.toy = validToy
+    next()
+}
 
 function getAll (req,res,next) {
     const limit = req.query.limit
     const data = model.getAll(limit)
     res.status(200).send({data})
+}
+
+function getToy (req,res,next) {
+    res.status(200).send(req.toy)
 }
 
 function makeToy (req,res,next) {
@@ -18,4 +32,11 @@ function makeToy (req,res,next) {
     res.status(201).send({data: result})
 }
 
-module.exports = {getAll, makeToy}
+function deleteToy(req,res,next) {
+    const data = model.deleteToy(req.toy)
+    res.status(200).send(data)
+}
+
+
+
+module.exports = {getAll, makeToy, chkToy, getToy, deleteToy}
