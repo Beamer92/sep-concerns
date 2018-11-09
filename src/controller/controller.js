@@ -37,6 +37,10 @@ function deleteToy(req,res,next) {
     res.status(200).send(data)
 }
 
+function updateToy(req,res,next) {
+    const data = model.updateToy(req.toy, req.body)
+    res.status(200).send(data)
+}
 
 
-module.exports = {getAll, makeToy, chkToy, getToy, deleteToy}
+module.exports = {getAll, makeToy, chkToy, getToy, deleteToy, updateToy}

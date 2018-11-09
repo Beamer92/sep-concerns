@@ -5,9 +5,19 @@ function getAll(limit) {
     return limit ? toys.slice(0, limit) : toys
 }
 
-// function getToy(id) {
-//     return toys.find(obj => obj.id === id)
-// }
+function updateToy(toy, updates){
+    const upToy = toys.find(obj => obj.id === toy.id)
+     if(updates.name)
+        upToy.name = updates.name
+    if(updates.material)
+        upToy.material = updates.material
+    if(updates.age)
+        upToy.age = updates.age
+    if(updates.color)
+        upToy.color = updates.color
+
+    return upToy
+}
 
 function deleteToy (toy){
     const ind = toys.findIndex(obj => obj.id === toy.id)
@@ -40,4 +50,4 @@ function makeToy(body) {
     return response
 }
 
-module.exports = { getAll, makeToy, deleteToy }
+module.exports = { getAll, makeToy, deleteToy, updateToy }
